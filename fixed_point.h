@@ -87,4 +87,28 @@ struct FixedPoint {
   FixedPointType fixed_point_value;
 };
 
+namespace std {
+
+template<int A, int B>
+FixedPoint<A, B> max(const FixedPoint<A, B>& a,
+                     const FixedPoint<A, B>& b) {
+  if (a.fixed_point_value > b.fixed_point_value) {
+    return a;
+  } else {
+    return b;
+  }
+}
+
+template<int A, int B>
+FixedPoint<A, B> min(const FixedPoint<A, B>& a,
+                     const FixedPoint<A, B>& b) {
+  if (a.fixed_point_value < b.fixed_point_value) {
+    return a;
+  } else {
+    return b;
+  }
+}
+
+}
+
 #endif  // FIXED_POINT_H_
